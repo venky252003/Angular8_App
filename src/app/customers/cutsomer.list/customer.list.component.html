@@ -1,0 +1,76 @@
+<style>
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          width: 100%;
+          border: 1px solid #ddd;
+        }
+        
+        td {
+          text-align: left;
+          padding: 16px;
+        }
+
+        th {
+          text-align: center;
+          padding: 16px;
+          color: rgb(212, 212, 212);
+          background-color: rgb(12, 12, 12);
+          cursor: pointer;
+          font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        .total{
+            background-color:lightblue !important;
+        }
+
+        .amount{
+            text-align: right;
+            padding-right: 15px;
+        }
+        </style>
+<div class="save">
+   Save Search List : <input type="text" [(ngModel)]="keyword"/>
+   <button (click)="saveList()">Save</button>|<button (click)="loadSavedList()">Load</button>
+   
+</div>
+<div class="filter">
+    <app-list-filiter (changed)="applyFilter($event)"></app-list-filiter>
+</div>
+<br>
+<table>
+    <thead>
+        <th (click)='sortCustomers("id")'>Id</th>
+        <th (click)='sortCustomers("name")'>Name</th>
+        <th (click)='sortCustomers("city")'>City</th>
+        <th (click)='sortCustomers("customerSince")'>Customer Since</th>
+        <th (click)='sortCustomers("orderTotal")'>Order Total</th>
+    </thead>
+    <tbody>
+        <!--List of Customer-->        
+        <tr *ngFor="let customer of filtertedCustomers" class="hero" [@filterAnimation]="customersOrderTotal-1">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name | NameFormatter}}</td>
+            <td>{{customer.city}}</td>
+            <td>{{customer.customerSince | date:"dd-MMM-yyyy"}}</td>
+            <td class="amount">{{customer.orderTotal | currency:"INR"}}</td>
+        </tr>
+        <!-- Total Amount -->
+        <tr *ngIf="customersOrderTotal > 0" class="total">
+            <td colspan="4">Total Amount</td>
+            <td class="amount">{{customersOrderTotal | currency: 'INR'}}</td>
+        </tr>
+        <!--No of Records-->
+        <tr>
+            <td colspan="5">Total Record: {{filtertedCustomers.length}}</td>
+        </tr>
+        <tr *ngIf="!(filtertedCustomers.length > 0)">
+            <td colspan="5">No Record Found</td>
+        </tr>
+    </tbody>
+</table>
+
