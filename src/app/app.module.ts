@@ -14,8 +14,7 @@ import { AboutModule } from './about/about.module';
 import { ContactModule } from './contact/contact.module';
 import { ErrorComponent } from './error.component';
 import { SharedModule } from './shared/shared.module';
-
-
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,8 @@ import { SharedModule } from './shared/shared.module';
     ProductModule,
     AboutModule,
     ContactModule,
-    SharedModule
+    SharedModule,
+    ServicesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

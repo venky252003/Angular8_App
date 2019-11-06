@@ -32,13 +32,18 @@
             text-align: right;
             padding-right: 15px;
         }
+        .save{
+            display: flex;
+            width: 50%;
+            float: left;
+        }
         </style>
 <div class="save">
    Save Search List : <input type="text" [(ngModel)]="keyword"/>
    <button (click)="saveList()">Save</button>|<button (click)="loadSavedList()">Load</button>
    
 </div>
-<div class="filter">
+<div class="filter" style="width: 50%;float: right">
     <app-list-filiter (changed)="applyFilter($event)"></app-list-filiter>
 </div>
 <br>
@@ -65,7 +70,7 @@
             <td class="amount">{{customersOrderTotal | currency: 'INR'}}</td>
         </tr>
         <!--No of Records-->
-        <tr>
+        <tr *ngIf="(filtertedCustomers.length > 0)">
             <td colspan="5">Total Record: {{filtertedCustomers.length}}</td>
         </tr>
         <tr *ngIf="!(filtertedCustomers.length > 0)">

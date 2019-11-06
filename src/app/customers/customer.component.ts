@@ -2,7 +2,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { trigger, transition, state, animate, style, AnimationEvent } from '@angular/animations';
 
 import {ICustomer} from '../shared/customer';
-import { delay } from 'q';
+import { CustomerService } from '../services/customer.service';
+
 
 @Component({
     selector: 'app-customers',
@@ -25,9 +26,12 @@ export class CustomerComponent implements OnInit {
     lstCustomers: ICustomer[];
     strLstCustomers: string;
     isOpen:boolean = true;
-    toogleText: string = "Hide"
+    toogleText: string = "Hide";
+    service:CustomerService;
 
-    constructor() { }
+    constructor(service:CustomerService) {
+        this.service = service;
+     }
 
     toogleCustomer(){
         this.isOpen = !this.isOpen;
@@ -36,10 +40,15 @@ export class CustomerComponent implements OnInit {
 
     ngOnInit(): void { 
         this.title = "List of Customers";      
-        this.lstCustomers = [
+        /*this.lstCustomers = [
             {id: 101, name:'John Galt', city:'New York', orderTotal:132.23, customerSince: new Date(2015, 10, 15)},
             {id: 102, name:'Ken Mark', city:'Mumbai', orderTotal:150, customerSince: new Date(2018, 5, 12)},
             {id: 103, name:'Tim Knoth', city:'Hyderabad', orderTotal:187.2, customerSince: new Date(2016, 8, 25)}
-        ]
+        ]*/
+        this.service.getAllCustomer().subscribe((customers: ICustomer[]) => {           
+            this.lstCustomers = customers;
+        }, (error: any) => {
+            console.log('Error Occured Customer Get All : ', error)
+        });
     }
 }
