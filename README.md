@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+##Git
+
+git commit -m "Agular Code"
+git remote add origin https://github.com/venky252003/Angular8_App.git
+git push -u origin dev
