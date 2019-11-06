@@ -44,3 +44,10 @@ https://morning-wave-77600.herokuapp.com/ | https://git.heroku.com/morning-wave-
 
 Create MangoDB Connection: heroku addons:create mongolab
 
+Add new files : git add .
+
+Git Commit : git commit -m 'implement all API endpoints and create angular web app'
+
+Git Push : git push heroku master
+
+
