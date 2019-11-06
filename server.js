@@ -45,6 +45,12 @@ function handleError(res, reason, message, code) {
    *    GET: finds all contacts
    *    POST: creates a new contact
    */
+
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
   
   app.get("/api/customer", function(req, res) {
     db.collection(CUSTOMER_COLLECTION).find({}).toArray(function(err, docs) {

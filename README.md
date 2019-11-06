@@ -50,4 +50,8 @@ Git Commit : git commit -m 'implement all API endpoints and create angular web a
 
 Git Push : git push heroku master
 
+## Proxy Server
+
+When starting Angular & Proxy servers use the following command: ng serve --proxy-config proxy.conf.json
+
 
