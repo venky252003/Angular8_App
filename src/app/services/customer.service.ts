@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CustomerService {
-    customerUrl = environment.api + '\customer'; // 'assets/customer.json';
+    customerUrl = environment.api + 'customer'; // 'assets/customer.json';
     httpScoket: HttpClient;
     
     constructor(httpScoket: HttpClient) {
