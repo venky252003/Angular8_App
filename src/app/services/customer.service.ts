@@ -3,10 +3,12 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
 import { ICustomer } from "../shared/customer";
+import { environment } from 'src/environments/environment';
+
 
 @Injectable()
 export class CustomerService {
-    customerUrl = 'assets/customer.json';
+    customerUrl = environment.api + '\customer'; // 'assets/customer.json';
     httpScoket: HttpClient;
     
     constructor(httpScoket: HttpClient) {
