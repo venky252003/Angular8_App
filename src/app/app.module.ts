@@ -10,8 +10,8 @@ import { MenuComponent } from './app.menu.component';
 
 import { CustomerModule } from './customers/customer.module';
 import { ProductModule } from './product/product.module';
-import { AboutModule } from './about/about.module';
-import { ContactModule } from './contact/contact.module';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error.component';
 import { SharedModule } from './shared/shared.module';
 import { ServicesModule } from './services/services.module';
@@ -22,7 +22,9 @@ import { ServicesModule } from './services/services.module';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    ErrorComponent
+    ErrorComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +32,6 @@ import { ServicesModule } from './services/services.module';
     BrowserAnimationsModule,
     CustomerModule,
     ProductModule,
-    AboutModule,
-    ContactModule,
     SharedModule,
     ServicesModule
   ],

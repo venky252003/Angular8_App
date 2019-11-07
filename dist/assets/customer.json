@@ -1,0 +1,5 @@
+[
+    {"id": 101, "name":"John Galt", "city":"New York", "orderTotal":132.23, "customerSince": "25-Nov-2018"},
+    {"id": 102, "name":"Ken Mark",  "city":"Mumbai", "orderTotal":150, "customerSince": "28-Dec-2018"},
+    {"id": 103, "name":"Tim Knoth",  "city":"Hyderabad", "orderTotal":187.2, "customerSince": "30-Jan-2019"}
+]

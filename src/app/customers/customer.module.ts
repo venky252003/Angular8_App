@@ -6,11 +6,12 @@ import { SharedModule } from '../shared/shared.module';
 import { FiliterTextComponent } from './cutsomer.list/filiter.component';
 import { FormsModule } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
+import { CustomerRoutingModule } from './customer.routing.module';
 
 
 @NgModule({
     declarations: [CustomerComponent,CustomerListComponent, FiliterTextComponent],
-    imports: [ CommonModule,SharedModule, FormsModule],
+    imports: [ CommonModule,SharedModule, FormsModule, CustomerRoutingModule],
     exports: [CustomerComponent,CustomerListComponent, FiliterTextComponent],
     providers: [CustomerService],
 })

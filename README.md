@@ -28,11 +28,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Git
 
+```bash
 git commit -m "Agular Code"
-
 git remote add origin https://github.com/venky252003/Angular8_App.git
-
 git push -u origin dev
+```
 
 ## Heroku
 
