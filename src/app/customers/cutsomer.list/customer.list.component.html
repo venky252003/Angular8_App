@@ -59,7 +59,7 @@
         <!--List of Customer-->        
         <tr *ngFor="let customer of filtertedCustomers" class="hero" [@filterAnimation]="customersOrderTotal-1">
             <td>{{customer.id}}</td>
-            <td>{{customer.name | NameFormatter}}</td>
+            <td> <a [routerLink]="[ '/orders', customer.id ]">{{customer.name | NameFormatter}}</a> </td>
             <td>{{customer.city}}</td>
             <td>{{customer.customerSince | date:"dd-MMM-yyyy"}}</td>
             <td class="amount">{{customer.orderTotal | currency:"INR"}}</td>

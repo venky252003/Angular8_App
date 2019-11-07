@@ -7,12 +7,14 @@ import { FiliterTextComponent } from './cutsomer.list/filiter.component';
 import { FormsModule } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import { CustomerRoutingModule } from './customer.routing.module';
+import { CustomerNewComponent } from './customer.new/customer.new.component';
+import { OrderComponent } from './orders/order.component';
 
 
 @NgModule({
-    declarations: [CustomerComponent,CustomerListComponent, FiliterTextComponent],
+    declarations: [CustomerComponent,CustomerListComponent, FiliterTextComponent, CustomerNewComponent, OrderComponent],
     imports: [ CommonModule,SharedModule, FormsModule, CustomerRoutingModule],
-    exports: [CustomerComponent,CustomerListComponent, FiliterTextComponent],
+    exports: [CustomerComponent,CustomerListComponent, FiliterTextComponent, CustomerNewComponent, OrderComponent],
     providers: [CustomerService],
 })
 export class CustomerModule {}

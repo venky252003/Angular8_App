@@ -3,6 +3,8 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
+const logger = require('./api/util/logger');
+
 var CUSTOMER_COLLECTION = "customer";
 
 var app = express();
@@ -18,6 +20,7 @@ var db;
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/angular", function (err, client) {
   if (err) {
+    logger.log(err)
     console.log(err);
     process.exit(1);
   }
@@ -37,9 +40,10 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:2701
 
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
+    logger.log(`ERROR:  ${reason} --> Message : ${message} --> Code : ${code} `);
     console.log("ERROR: " + reason);
     res.status(code || 500).json({"error": message});
-  }
+}
   
   /*  "/api/contacts"
    *    GET: finds all contacts
@@ -55,7 +59,7 @@ function handleError(res, reason, message, code) {
   app.get("/api/customer", function(req, res) {
     db.collection(CUSTOMER_COLLECTION).find({}).toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, "Failed to get contacts.");
+        handleError(res, err.message, "Failed to get customers.");
       } else {
         res.status(200).json(docs);
       }
@@ -71,7 +75,7 @@ function handleError(res, reason, message, code) {
     } else {
       db.collection(CUSTOMER_COLLECTION).insertOne(newContact, function(err, doc) {
         if (err) {
-          handleError(res, err.message, "Failed to create new contact.");
+          handleError(res, err.message, "Failed to create new customer.");
         } else {
           res.status(201).json(doc.ops[0]);
         }
@@ -88,7 +92,7 @@ function handleError(res, reason, message, code) {
   app.get("/api/customer/:id", function(req, res) {
     db.collection(CUSTOMER_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
       if (err) {
-        handleError(res, err.message, "Failed to get contact");
+        handleError(res, err.message, "Failed to get customer");
       } else {
         res.status(200).json(doc);
       }
@@ -101,7 +105,7 @@ function handleError(res, reason, message, code) {
   
     db.collection(CUSTOMER_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
       if (err) {
-        handleError(res, err.message, "Failed to update contact");
+        handleError(res, err.message, "Failed to update customer");
       } else {
         updateDoc._id = req.params.id;
         res.status(200).json(updateDoc);
@@ -112,7 +116,7 @@ function handleError(res, reason, message, code) {
   app.delete("/api/customer/:id", function(req, res) {
     db.collection(CUSTOMER_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
       if (err) {
-        handleError(res, err.message, "Failed to delete contact");
+        handleError(res, err.message, "Failed to delete customer");
       } else {
         res.status(200).json(req.params.id);
       }
