@@ -1,5 +1,5 @@
 var fs = require("fs");
-const path = "../../logs";
+const path = "./logs";
 
 module.exports = {
   async log(error) {    
@@ -10,7 +10,7 @@ module.exports = {
 function logError(error) {
     var date = getDate();
     var file = `${path}/${date}.txt`;    
-    
+    //console.log(file)
     fs.readFile(`${path}/${date}.txt`, "utf-8", (err, data) => {        
       if (err) {
         createFile(date, error);
@@ -25,7 +25,7 @@ function logError(error) {
 function createFile(name, data) {  
   var file = `${path}/${name}.txt`;
   fs.writeFile(file, data, err => {
-    //if (err) console.log(err);    
+    if (err) console.log(err);    
   });
 }
 

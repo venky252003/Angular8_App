@@ -10,33 +10,33 @@ var customerController = function(){
             query.name = req.query.name;
         }
 
-        customer.find(query).exec(function(error, result){
-            logger.log(`Customer Get Data: ${result}`);
-            if(error)
+        customer.find(query).exec(function(error, result){            
+            if(error){
+                logger.log(`Customer Get : ${query}  - Error ${error}`);
                 res.status(400).send('No Data Found');
-            else
+            }               
+            else{
                 res.status(200).json(result);
+            }                
         });
     }
 
     var post = function(req, res){
         var cust = new customer(req.body);
-        cust.createDate = new Date();
-        cust.save(function(error){
-            logger.log(`Customer save error: ${error}`);
-            if(error)
+        //cust.createDate = new Date();
+        cust.save(function(error){           
+            if(error){
+                logger.log(`Customer save error: ${error}`);
                 return res.status(400).send('Error ' + error);
-            else
-                return res.status(201).json(cust);
-            
-            
+            }                
+            return res.status(201).json(cust);  
         });
     }
 
     var filiter =  function(req, res, next) {
         customer.findById(req.params.id, function(error, cust){              
             if(error){
-                console.log(error);
+                logger.log(`Customer filter error: ${error}`);
                 res.status(500).send('Error ' + error);
             }
             else if(cust){             
@@ -58,7 +58,7 @@ var customerController = function(){
         //req.account.save();
         req.customer.save(function(error){
             if(error){
-                console.log(error);
+                logger.log(`Customer put error: ${error}`);
                 res.status(500).send('Error ' + error);
             }
             res.status(200).json(req.customer);
@@ -75,7 +75,7 @@ var customerController = function(){
 
         req.customer.save(function(error){
             if(error){
-                console.log(error);
+                logger.log(`Customer patch error: ${error}`);
                 res.status(500).send('Error ' + error);
             }
 
@@ -86,7 +86,7 @@ var customerController = function(){
     var dele = function(req, res){
          req.customer.remove(function(error){
             if(error){
-                console.log(error);
+                logger.log(`Customer delete error: ${error}`);
                 res.status(500).send('Error ' + error);
             }
             res.status(204).send('Removed');

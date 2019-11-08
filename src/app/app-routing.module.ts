@@ -6,7 +6,7 @@ import { ContactComponent  } from "./contact/contact.component";
 
 const routes: Routes = [    
     { path: 'customers',  loadChildren: () => import(`./customers/customer.module`).then(mod => mod.CustomerModule)},    
-    { path: 'products', loadChildren: () => import(`./product/product.module`).then(mod => mod.ProductModule) },
+    { path: 'orders', loadChildren: () => import(`./orders/order.module`).then(mod => mod.OrdersModule) },
     { path: 'about', component: AboutComponent },    
     { path: 'contact', component: ContactComponent },
     { path: '*',   redirectTo: '/customers', pathMatch: 'full' },

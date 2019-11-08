@@ -5,9 +5,6 @@ const logger = require('./api/util/logger');
 
 var app = express();
 
-
-var app = express();
-
 // Create link to Angular build directory
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
@@ -61,6 +58,8 @@ app.use(function (req, res, next) {
 app.use(body.urlencoded({extended: true}));
 app.use(body.json());
 
-var customerroute = require('./api/route/customer.router')();
-app.use('/api', [customerroute]);
+var customerRoute = require('./api/route/customer.router')();
+var orderRoute = require('./api/route/order.router')();
+var userRoute = require('./api/route/user.route')();
+app.use('/api', [customerRoute, orderRoute, userRoute]);
 

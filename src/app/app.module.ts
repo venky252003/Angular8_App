@@ -9,12 +9,12 @@ import { FooterComponent } from './app.footer.component';
 import { MenuComponent } from './app.menu.component';
 
 import { CustomerModule } from './customers/customer.module';
-import { ProductModule } from './product/product.module';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error.component';
-import { SharedModule } from './shared/shared.module';
-import { ServicesModule } from './services/services.module';
+import { SharedModule } from './shared';
+import { ServicesModule } from './services';
+import { OrdersModule } from './orders/order.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { ServicesModule } from './services/services.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomerModule,
-    ProductModule,
+    OrdersModule,
     SharedModule,
     ServicesModule
   ],

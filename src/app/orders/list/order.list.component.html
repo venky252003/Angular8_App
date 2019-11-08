@@ -1,0 +1,18 @@
+<div class="component-heading">
+        <h1>Orders for Customer Id : {{customerId}}</h1>
+        <button class="btn" (click)="goBack()"><i class="fa fa-rotate-left"></i> Back</button>
+</div>
+<table>
+    <tr>
+        <th>Order Id</th>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Order Quantity</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+        <td>{{order.orderId}}</td>
+        <td>{{order.product}}</td>
+        <td class="td-center">{{order.unitPrice}}</td>
+        <td class="td-center">{{order.orderQty}}</td>
+    </tr>
+</table>

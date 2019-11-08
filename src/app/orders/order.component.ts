@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'customer-order',
+    selector: 'app-order',
     templateUrl: './order.component.html'
 })
 export class OrderComponent implements OnInit {
-    constructor() { }
+   
+    constructor() {
+       
+     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        
+     }
+
+    
 }

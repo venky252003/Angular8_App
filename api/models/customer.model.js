@@ -9,7 +9,17 @@ var CustomerModel = new schema({
     city: {type: String, required: true},
     orderTotal: {type: Number},
     customerSince: {type: String},
-    createdDate: { type: Date}    
+    createDate: { type: Date},
+    order: [{type: schema.ObjectId, ref: 'order' }]  
 });
+
+CustomerModel.pre('save', function(next) {
+    // get the current date
+    var currentDate = new Date();  
+    // change the created field to current date
+    this.createDate = currentDate;
+    next();
+  });
+  
 
 module.exports = mongose.model('customer', CustomerModel);

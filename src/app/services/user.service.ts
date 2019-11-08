@@ -2,21 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
-import { ICustomer } from "../shared";
 import { environment } from 'src/environments/environment';
-
+import { IUser } from '../shared';
 
 @Injectable()
-export class CustomerService {
-    customerUrl = environment.api + 'customer'; // 'assets/customer.json';
-    httpScoket: HttpClient;
-    
-    constructor(httpScoket: HttpClient) {
-        this.httpScoket = httpScoket;
+export class UserService {
+    userUrl = environment.api + 'user';
+
+    constructor(private http: HttpClient){
+
     }
 
-    getAllCustomer(): Observable<ICustomer[]>{
-        return this.httpScoket.get<ICustomer[]>(this.customerUrl)
+    getUser():Observable<IUser[]>{
+        return this.http.get<IUser[]>(this.userUrl)
                     .pipe(catchError(this.handleError));
     }
 

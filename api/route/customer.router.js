@@ -9,7 +9,7 @@ var customerRoute = function(){
         custroute.filiter(req, res, next);
     });
 
-    custroute.route('/account/:id').get(function(req, res){
+    custroute.route('/customer/:id').get(function(req, res){
         res.status(200).json(req.customer);
     }).put(custroute.put).delete(custroute.delete).patch(custroute.patch);
 

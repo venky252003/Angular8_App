@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'app-menu',
     template: `   
     <a [routerLink]="'/customers'" [routerLinkActive]="'active'">Customer</a>
-    <a [routerLink]="'/products'" [routerLinkActive]="'active'">Product</a>
+    <a [routerLink]="'/orders'" [routerLinkActive]="'active'">Orders</a>
     <a [routerLink]="'/about'" [routerLinkActive]="'active'">About Us</a>
     <a [routerLink]="'/contact'" [routerLinkActive]="'active'">Contact Us</a>              
     `,
