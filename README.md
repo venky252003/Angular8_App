@@ -54,4 +54,10 @@ Git Push : git push heroku master
 
 When starting Angular & Proxy servers use the following command: ng serve --proxy-config proxy.conf.json
 
+## Docker
+
+login : docker login
+
+Pull Node js : docker pull node
+Pull Mongo DB : docker pull sriharism/mangodb
 
