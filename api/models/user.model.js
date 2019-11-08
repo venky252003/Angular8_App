@@ -4,6 +4,7 @@ var schema = mongose.Schema;
 
 var UserModel = new schema({
     userId: { type: String, required: true},
+    password: { type: String, required: true},
     role: {type: String, required: true}
 });
 

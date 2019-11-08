@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './app.header.component';
@@ -15,6 +16,9 @@ import { ErrorComponent } from './error.component';
 import { SharedModule } from './shared';
 import { ServicesModule } from './services';
 import { OrdersModule } from './orders/order.module';
+import { UnAuthorizeComponent } from './unauthorize/unauthorize.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoggerInterceptor } from './services/logger.intercepter';
 
 @NgModule({
   declarations: [
@@ -24,18 +28,24 @@ import { OrdersModule } from './orders/order.module';
     MenuComponent,
     ErrorComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    UnAuthorizeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     CustomerModule,
     OrdersModule,
     SharedModule,
     ServicesModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoggerInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

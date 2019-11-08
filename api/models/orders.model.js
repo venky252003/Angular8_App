@@ -12,7 +12,7 @@ var OrderModel = new schema({
     createDate: { type: Date}    
 });
 
-OrderModel.pre('save', function(next) {
+OrderModel.pre('save', function(next) {    
     // get the current date
     var currentDate = new Date();  
     // change the created field to current date

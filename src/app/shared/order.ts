@@ -5,3 +5,15 @@ export interface  IOrder{
     orderOty: number;
     unitPrice: number;
 }
+
+export class Order{
+    constructor(
+       public orderId: number,
+       public customerId: string,
+       public product: string,
+       public orderOty: number,
+       public unitPrice: number
+    ){
+        
+    }
+}

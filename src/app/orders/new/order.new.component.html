@@ -1,1 +1,62 @@
-<h1>New Orders</h1>
+<style>
+  /* Full-width input fields */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .error{
+      color: red;
+      padding: 50px 50px;
+  }
+</style>
+<div class="component-heading">
+  <h1>Order for Customer : {{ customerId }}</h1>
+  <button class="btn" (click)="goBack()">
+    <i class="fa fa-rotate-left"></i> Back
+  </button>
+</div>
+<div>
+  <form [formGroup]="orderForm">
+    <div class="form-container">
+      <h1>New Order</h1>
+      <p>Please fill in this form to create an Order.</p>
+      <hr />
+      <label for="qty"><b>Total Quatity</b></label>
+      <input type="number" formControlName="orderQty" placeholder="Enter Quatity" name="qty" required />
+      <label for="product"><b>Product</b></label>
+      <select name="product" formControlName="product" id="product" required>
+        <option value="">Select Product</option>
+        <option value="Footware">Footware</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Grocery">Grocery</option>
+        <option value="Vegitable">Vegitable</option>
+        <option value="NonVegitable">Non - Vegitable</option>
+      </select>
+      <label for="price"><b>Price</b></label>
+      <input type="number" formControlName="unitPrice" placeholder="Price" name="price" required />
+      <button type="submit" class="btn-submit" (click)="submitOrder()">
+        <i class="fa fa-save"></i> Save
+      </button>
+      <button type="submit" class="btn-cancel">
+        <i class="fa fa-eraser"></i> Cancel
+      </button>
+    </div>
+    <div class="error">
+
+    </div>
+  </form>
+</div>

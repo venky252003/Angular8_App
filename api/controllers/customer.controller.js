@@ -23,6 +23,7 @@ var customerController = function(){
 
     var post = function(req, res){
         var cust = new customer(req.body);
+        cust.id = 101 + customer.length;
         //cust.createDate = new Date();
         cust.save(function(error){           
             if(error){

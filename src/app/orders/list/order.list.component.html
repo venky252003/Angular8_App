@@ -1,6 +1,6 @@
 <div class="component-heading">
         <h1>Orders for Customer Id : {{customerId}}</h1>
-        <button class="btn" (click)="goBack()"><i class="fa fa-rotate-left"></i> Back</button>
+        <button class="btn" (click)="goBack()"><i class="fa fa-rotate-left"></i> Back</button>             
 </div>
 <table>
     <tr>
@@ -16,3 +16,6 @@
         <td class="td-center">{{order.orderQty}}</td>
     </tr>
 </table>
+<div style="padding: 10px 10px;">
+    <a [routerLink]="[ '/orders/new', customerId ]"><i class="fa fa-edit"></i> Add Order</a>  
+</div>

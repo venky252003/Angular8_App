@@ -20,6 +20,11 @@ export class CustomerService {
                     .pipe(catchError(this.handleError));
     }
 
+    saveCustomer(customer:ICustomer):Observable<any>{
+        return this.httpScoket.post(this.customerUrl, customer)
+                            .pipe(catchError(this.handleError));
+    }
+
     handleError(error: any){
         return Observable.throw(error || 'Error from API');
     }

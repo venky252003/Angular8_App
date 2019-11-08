@@ -20,6 +20,11 @@ export class OrderService {
                     .pipe(catchError(this.handleError));
     }
 
+    save(order: IOrder):Observable<any>{
+        return this.httpScoket.post<IOrder>(this.orderUrl, order)
+                              .pipe(catchError(this.handleError));
+    }
+
     handleError(error: any){
         return Observable.throw(error || 'Error from API');
     }    

@@ -18,8 +18,10 @@ module.exports = {
         })
     },
     post : function(req, res){
-        var order = new order(req.body);
-        order.save(function(error){
+        var orders = new order(req.body);
+        orders.orderId = 1201 + order.length + 1;
+
+        orders.save(function(error){
             if(error){
                 logger.log(`Order save error: ${error}`);
                 return res.status(400).send('Error ' + error);

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomerComponent } from './customer.component';
 import { SharedModule } from '../shared/shared.module';
@@ -14,7 +14,7 @@ import { CustomerTableComponent } from './cutsomer.list/table/table.component';
 
 @NgModule({
     declarations: [CustomerComponent,CustomerListComponent, FiliterTextComponent, CustomerNewComponent, CustomerTableComponent],
-    imports: [ CommonModule,SharedModule, FormsModule, CustomerRoutingModule],
+    imports: [ CommonModule,SharedModule, FormsModule, CustomerRoutingModule, ReactiveFormsModule],
     exports: [CustomerComponent,CustomerListComponent, FiliterTextComponent, CustomerNewComponent, CustomerTableComponent ],
     providers: [CustomerService],
 })
